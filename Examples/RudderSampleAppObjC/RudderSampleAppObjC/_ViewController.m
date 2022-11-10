@@ -19,64 +19,35 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-//    [[RSClient sharedInstance] identify:@"test_user_id" traits:@{
-//        @"firstName": @"Test",
-//        @"lastName": @"Name",
-//        @"email": @"test_1@gmail.com",
-//        @"phone": @"+91-986543210",
-//        @"company": @{
-//                @"id": @"test_company_id",
-//                @"name": @"Test Company",
-//                @"industry": @"Test Industry",
-//                @"address": @"Test Location"
-//        }
-//    }];
-//
-//    [[RSClient sharedInstance] alias:@"some_other_id"];
-//
-//    [[RSClient sharedInstance] track:@"test_event_2" properties:@{
-//        @"string_key_1": @"string_value",
-//        @"string_key_2": @"string_value",
-//        @"string_key_3": @"string_value",
-//        @"string_key_4": @"string_value",
-//        @"bool_key": @YES,
-//        @"num_key": @1.2,
-//        @"dict_key": @{
-//                @"c_key_1": @"value_1",
-//                @"c_key_2": @"value_2"
-//        }
-//    }];
-    
+}
+- (IBAction)track:(id)sender {
 //    RSOption *options = [[RSOption alloc] init];
-//    [options putExternalId:@"test" withId:@"test"];
-//    [[RSClient sharedInstance] screen:@"ViewController"];
-//    [[RSClient sharedInstance] screen:@"Main screen name" properties:@{@"prop_key" : @"prop_value"}];
-//    [[RSClient sharedInstance] screen:@"test screen" properties:@{@"prop_key" : @"prop_value"} options:options];
+//    [options putExternalId:@"brazeExternalId" withId:@"some_external_id_1"];
+//    [options putIntegration:@"braze" isEnabled:true];
+//    [options putCustomContext:@{
+//        @"item-1": @"price-1",
+//        @"item-2": @"price-2"
+//    } withKey:@"new-1"];
+//
+//    RSMessage *message = [[RSMessage alloc] init];
+//    message.event = @"Apple";
+//    message.channel = @"JS";
+//
+//    [[RSClient sharedInstance] identify:@"userId 12kjk" traits:@{
+//                    @"item-1": @"price-1",
+//                    @"item-2": @"price-2"
+//                } options:options];
+//    RSClient *client = [RSClient getInstance];
+//    [[client getContext] persistTraits];
+//    sleep(10000);
+    [[RSClient sharedInstance] track:@"track event"];
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//    NSMutableDictionary *traits = [[NSMutableDictionary alloc] initWithDictionary:@{
-//        @"firstName": @"Test",
-//        @"lastName": @"Name",
-//        @"email": @"test_1@gmail.com",
-//        @"phone": @"+91-986543210",
-//        @"company": @{
-//            @"id": @"test_company_id",
-//            @"name": @"Test Company",
-//            @"industry": @"Test Industry",
-//            @"address": @"Test Location"
-//        },
-//        @"user_id": [NSNull null]
-//    }];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-//    [[RSClient sharedInstance] identify:@"test_user_id" traits:@{}];
-//    });
-        
-//    [traits removeAllObjects];
-//    [traits setValue:@"Kolkata" forKey:@"address"];
-//    });
+}
+- (IBAction)reset:(id)sender {
     
-    
+//    [[RSClient sharedInstance] reset];
+    [[RSClient sharedInstance] flush];
+//    [[RSClient sharedInstance] endSession];
 }
 
 - (void)didReceiveMemoryWarning

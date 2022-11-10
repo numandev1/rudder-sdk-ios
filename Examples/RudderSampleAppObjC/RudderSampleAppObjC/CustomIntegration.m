@@ -14,6 +14,7 @@
 
 - (instancetype) initWithConfig:(NSDictionary *)config withAnalytics:(RSClient *)client {
     if (self == [super init]) {
+        NSLog(@"Custom Integration: Instace is being initialised.");
     }
     return self;
 }
@@ -21,11 +22,15 @@
 - (void) processRuderEvent:(nonnull RSMessage *)message {
     NSString *type = message.type;
     if ([type isEqualToString:@"identify"]) {
-//        Do something
+        NSLog(@"Custom Integration: Identify event is being called.");
     } else if ([type isEqualToString:@"track"]) {
-//        Do something
+        NSLog(@"Custom Integration: Track event is being called.");
     } else if ([type isEqualToString:@"screen"]) {
-//        Do something
+        NSLog(@"Custom Integration: Screen event is being called.");
+    } else if ([type isEqualToString:@"group"]) {
+        NSLog(@"Custom Integration: Group event is being called.");
+    } else if ([type isEqualToString:@"alias"]) {
+        NSLog(@"Custom Integration: Alias event is being called.");
     } else {
         [RSLogger logWarn:@"MessageType is not supported"];
     }
@@ -36,11 +41,11 @@
 }
 
 - (void) reset {
-    NSLog(@"Reset is received");
+    NSLog(@"Custom Integration: Reset is received");
 }
 
 - (void) flush {
-    NSLog(@"flush is received");
+    NSLog(@"Custom Integration: flush is received");
 }
 
 @end
