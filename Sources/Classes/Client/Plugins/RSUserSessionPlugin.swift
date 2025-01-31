@@ -98,6 +98,10 @@ class RSUserSessionPlugin: RSPlatformPlugin, RSEventPlugin {
         self.sessionId = sessionId
     }
     
+    func getSessionId() -> String {
+        return self.sessionId?.description ?? ""
+    }
+    
     private func refreshSesionParams() {
         self.isAutomaticSessionTrackingStatus = RSUserDefaults.getAutomaticSessionTrackingStatus() ?? false
         self.isManualSessionTrackingStatus = RSUserDefaults.getManualSessionTrackingStatus() ?? false
@@ -157,6 +161,16 @@ extension RSClient {
         } else {
             log(message: "SDK is not yet initialised. Hence manual session cannot be started", logLevel: .debug)
         }
+    }
+    
+    @objc
+    public func getSessionId() -> String {
+        if let userSessionPlugin = self.find(pluginType: RSUserSessionPlugin.self) {
+            return userSessionPlugin.getSessionId()
+        } else {
+            log(message: "SDK is not yet initialised. Hence manual session cannot be started", logLevel: .debug)
+        }
+        return ""
     }
     
     @objc
